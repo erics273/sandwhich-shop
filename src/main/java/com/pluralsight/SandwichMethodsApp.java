@@ -28,6 +28,7 @@ public class SandwichMethodsApp {
 //                continue;
 //            }
 
+            //switch statement simialr to the if logic above
             switch (sammySize){
                 case 1:
                     total += 5.45;
@@ -42,9 +43,15 @@ public class SandwichMethodsApp {
 
             //all worked out with the sammy size selection, lets figure out the discount
             int discount = 0;
+
+            //use a try catch to recover from an invalid age selection
+            //this comes later in the curriculum but a good use case
             try{
 
+                //call the method that asks the customer their age
                 int customerAge = ageSelection();
+
+                //determine the discount based on their age
                 if(customerAge <= 17){
                     discount = 10;
                 } else if (customerAge >= 65) {
@@ -58,11 +65,17 @@ public class SandwichMethodsApp {
                 continue;
             }
 
+            //eath the new line as we switch from getting numeric input from the user to
+            //a string from the user
             theScanner.nextLine();
 
+            //run the method/code that ask the user if they want the sammy loaded
             String isLoaded = isSammyLoaded();
 
+            //start calculating the upcharge
             double loadedUpcharge = 0;
+
+            //if they said "y" to the upcharge figure it out based on sammy size
             if(isLoaded.equalsIgnoreCase("y")){
 
                 if(sammySize == 1){
@@ -74,22 +87,26 @@ public class SandwichMethodsApp {
             }
 
 
+            //calculate the final total
             total = total - (total * discount /100) + loadedUpcharge;
 
+            //run the method that displays the total, handing it the info it needs about the order
             displayTotal(sammySize, total, discount);
 
+            //ask if they want to place another order
             String orderAnother = orderAnotherSammy();
 
+            //if they do not want to place another order, then kill the app
             if(!orderAnother.equalsIgnoreCase("y")){
                 appRunning = false;
             }
-
 
         }
 
 
     }
 
+    //method to ask the sammy size
     public static int sammySizeSelection() {
 
         //Ask the user what size sammy
@@ -104,6 +121,7 @@ public class SandwichMethodsApp {
 
     }
 
+    //method to ask if they want the sammy loaded
     public static String isSammyLoaded() {
 
         //Ask the user what size sammy
@@ -118,6 +136,7 @@ public class SandwichMethodsApp {
 
     }
 
+    //method to ask the user their age
     public static int ageSelection() {
 
         //Ask the user what size sammy
@@ -132,6 +151,7 @@ public class SandwichMethodsApp {
 
     }
 
+    //method to display the total based on the size, total, and discount
     public static void displayTotal(int sammySize, double total, int discount) {
 
         String size = "";
@@ -150,6 +170,7 @@ public class SandwichMethodsApp {
 
     }
 
+    //method to ask user if they want another sammy
     public static String orderAnotherSammy() {
 
         //Ask the user what size sammy
